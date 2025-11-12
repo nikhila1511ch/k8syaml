@@ -11,7 +11,7 @@ spec:
     env: ui
   ports: 
   - port: 80
-    nodePort: 31111
+    nodePort: 31212
     targetPort: 80
 
 
@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  generateName: service-
+  name: service-lb
   namespace: frontend
   labels:
     env: ui
