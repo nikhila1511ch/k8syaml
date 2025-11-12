@@ -10,7 +10,7 @@ spec:
   selector:
     env: ui
   ports: 
-  - port:80
+  - port: 80
     nodePort: 31111
     targetPort: 80
 
