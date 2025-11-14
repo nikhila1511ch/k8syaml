@@ -2,23 +2,22 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: init-pod
-  namespace: frontend
   labels: 
     env: frontend
 spec:
   containers: 
     - name: pod-1
-      image: nginx
-      command: ["sh","-c"]
-      args: ["echo 'this is main container'&& sleep 3600"]
+      image: busybox:latest
+      command: ['sh','-c']
+      args: ['echo 'this is main container'&& sleep 3600']
 
   initContainers:
     - name: init-myservice
-      image: alpine
-      command: ["sh","-c"]
-      args: ["until nslookup myservice.default.svc.cluster.local;echo 'this is init container';sleep 2"]
+      image: busybox:latest
+      command: ['sh','-c']
+      args: ["until nslookup myservice.default.svc.cluster.local; do echo this is init container;sleep 2"]
     - name: init-mydb
-      image: alpine
-      command: ["sh","-c"]
-      args: ["until nslookup mydb.default.svc.cluster.local;echo 'this is init container';sleep 2"]
+      image: busybox:latest
+      command: ['sh','-c']
+      args: ['until nslookup mydb.default.svc.cluster.local; do echo this is init container;sleep 2']
       
