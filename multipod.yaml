@@ -9,7 +9,7 @@ spec:
     - name: pod-1
       image: busybox:latest
       command: ['sh','-c']
-      args: ['echo 'this is main container' && sleep 3600']
+      args: ['echo 'this is main container && sleep 3600']
 
   initContainers:
     - name: init-myservice
