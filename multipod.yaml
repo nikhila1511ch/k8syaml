@@ -6,14 +6,19 @@ metadata:
   labels: 
     env: frontend
 spec:
-  initContainers:
-    - name: init-pod
-      image: alpine
-      command: ["sh","-c"]
-      args: ["echo 'this is init container';sleep 20"]
-      
   containers: 
     - name: pod-1
       image: nginx
       command: ["sh","-c"]
-      args: ["echo 'this is main container';sleep 3600"]
+      args: ["echo 'this is main container'&& sleep 3600"]
+
+  initContainers:
+    - name: init-myservice
+      image: alpine
+      command: ["sh","-c"]
+      args: ["until nslookup myservice.default.svc.cluster.local;echo 'this is init container';sleep 2"]
+    - name: init-mydb
+      image: alpine
+      command: ["sh","-c"]
+      args: ["until nslookup mydb.default.svc.cluster.local;echo 'this is init container';sleep 2"]
+      
