@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-pod
+  namespace: frontent
+  labels: 
+        env:
+        - name: ENVIRONMENT
+          value: "key-value"
+spec:
+  initcontainers:
+    - name: init-pod
+      image: nginx
+      command: ["sh","-c"]
+      args:['echo this is init container,sleep 20,done']
+      
+  containers: 
+    - name: pod-1
+      image: nginx
+      command: ["sh","-c"]
+      args:['echo this is main container,sleep 20,done']
