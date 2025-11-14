@@ -8,7 +8,7 @@ metadata:
 spec:
   initContainers:
     - name: init-pod
-      image: nginx
+      image: alpine
       command: ["sh","-c"]
       args: ["echo 'this is init container';sleep 20"]
       
