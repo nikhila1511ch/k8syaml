@@ -1,17 +1,16 @@
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
 metadata:
   name: nginx
-  lables:
+  labels:
     app: nginx
 spec:
   replicas: 1
   selector: 
     matchLabels: 
-      name: nginx
+      app: nginx
   template:
     metadata:
-      name: nginx
       labels: 
         app: nginx
     spec:
@@ -29,14 +28,15 @@ spec:
 ---
 
 apiVersion: v1
-kind: service
+kind: Service
 metadata: 
   name: nginx
   labels:
     app: nginx
 spec:
   type: LoadBalancer
-  - port: 80
-    target: 80
+  ports:
+    - port: 80
+      targetPort: 80
   selector:
     app: nginx
