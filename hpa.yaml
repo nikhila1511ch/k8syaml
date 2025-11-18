@@ -17,6 +17,7 @@ spec:
       containers:
       - name: nginx
         image: nginx
+        command: ["sleep","3600"]
         resources:
           requests:
             cpu: "50m"
