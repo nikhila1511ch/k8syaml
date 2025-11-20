@@ -1,9 +1,9 @@
-FROM python:latest
+FROM  httpd:2.4
 
-WORKDIR /app
+WORKDIR /home/ubuntu/.ssh/k8syaml/
 
 COPY . .
 
 EXPOSE 3000
 
-CMD [ "python","python.py" ]
+CMD [ "httpd","index.html" ]
